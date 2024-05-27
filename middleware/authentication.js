@@ -1,8 +1,7 @@
 // 06-jobs-api/starter/middleware/authentication.js
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const { UnauthorizedError } = require("../utils/errors");
-
+const { UnauthorizedError } = require("../errors");
 module.exports = (req, res, next) => {
   //   const authHeader = req.get("Authorization");
   const authHeader = req.headers.authorization;
