@@ -1,4 +1,4 @@
-// 06-jobs-api/starter/controllers/jobs.js
+// 06-jobs-api/controllers/jobs.js
 import Job from "../models/Job";
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError, NotFoundError } from "../errors";
@@ -71,4 +71,4 @@ const getJob = async (req, res) => {
   res.status(StatusCodes.OK).json({ job });
 };
 
-module.exports = { getAllJobs, createJob, updateJob, deleteJob, getJob };
+export default { getAllJobs, createJob, updateJob, deleteJob, getJob };
