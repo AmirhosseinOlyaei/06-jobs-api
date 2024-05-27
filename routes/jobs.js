@@ -1,4 +1,4 @@
-// 06-jobs-api/routes/jobs.js
+// routes/jobs.js
 import express from "express";
 const router = express.Router();
 
@@ -8,9 +8,9 @@ import {
   getAllJobs,
   updateJob,
   getJob,
-} from "../controllers/jobs";
+} from "../controllers/jobs.js";
 
-import { authenticateUser } from "../middleware/authentication";
+import authenticateUser from "../middleware/authentication.js";
 
 router.post("/", authenticateUser, createJob);
 router.get("/", authenticateUser, getAllJobs);

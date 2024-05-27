@@ -1,7 +1,8 @@
-// 06-jobs-api/controllers/auth.js
-import User from "../models/User";
+// controllers/auth.js
+import User from "../models/User.js";
 import { StatusCodes } from "http-status-codes";
-import { BadRequestError, UnauthenticatedError } from "../errors";
+import BadRequestError from "../errors/bad-request.js";
+import UnauthenticatedError from "../errors/unauthenticated.js";
 
 const register = async (req, res) => {
   const user = await User.create({ ...req.body });

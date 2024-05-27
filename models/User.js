@@ -1,8 +1,8 @@
-// 06-jobs-api/models/User.js
+// models/User.js
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import Schema from mongoose.Schema;
+const { Schema } = mongoose;
 
 const userSchema = new Schema({
   name: {

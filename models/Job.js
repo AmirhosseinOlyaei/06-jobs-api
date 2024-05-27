@@ -1,4 +1,4 @@
-// 06-jobs-api/models/Job.js
+// models/Job.js
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 

@@ -1,4 +1,4 @@
-// 06-jobs-api/middleware/authentication.js
+// middleware/authentication.js
 import jwt from "jsonwebtoken";
 import UnauthenticatedError from "../errors/unauthenticated.js";
 

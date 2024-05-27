@@ -1,9 +1,9 @@
-// 06-jobs-api/routes/auth.js
+// routes/auth.js
 import express from "express";
-import { login, register } from "../controllers/auth.js";
+import authController from "../controllers/auth.js";
 const router = express.Router();
 
-router.post("/register", register);
-router.post("/login", login);
+router.post("/register", authController.register);
+router.post("/login", authController.login);
 
 export default router;

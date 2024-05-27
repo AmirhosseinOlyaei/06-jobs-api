@@ -10,4 +10,4 @@ const connectDB = (url) => {
   });
 };
 
-module.exports = connectDB;
+export default connectDB;
