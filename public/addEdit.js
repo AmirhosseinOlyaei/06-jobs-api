@@ -14,6 +14,7 @@ export const handleAddEdit = () => {
   status = document.getElementById("status");
   addingJob = document.getElementById("adding-job");
   const editCancel = document.getElementById("edit-cancel");
+
   addEditDiv.addEventListener("click", async (e) => {
     if (inputEnabled && e.target.nodeName === "BUTTON") {
       if (e.target === addingJob) {
@@ -21,6 +22,12 @@ export const handleAddEdit = () => {
 
         let method = "POST";
         let url = "/api/v1/jobs";
+
+        if (addingJob.textContent === "update") {
+          method = "PATCH";
+          url = `/api/v1/jobs/${addEditDiv.dataset.id}`;
+        }
+
         try {
           const response = await fetch(url, {
             method: method,
@@ -36,14 +43,18 @@ export const handleAddEdit = () => {
           });
 
           const data = await response.json();
-          if (response.status === 201) {
-            // 201 indicates a successful create
-            message.textContent = "The job entry was created.";
+          if (response.status === 200 || response.status === 201) {
+            if (response.status === 200) {
+              // a 200 is expected for a successful update
+              message.textContent = "The job entry was updated.";
+            } else {
+              // a 201 is expected for a successful create
+              message.textContent = "The job entry was created.";
+            }
 
             company.value = "";
             position.value = "";
             status.value = "pending";
-
             showJobs();
           } else {
             message.textContent = data.msg;
