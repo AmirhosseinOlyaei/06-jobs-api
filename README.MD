@@ -1,6 +1,6 @@
-# HR and user registeration API
+# HR and user registration API
 
-HR and user registeration API using Node.
+Human Resource and user registration API using Node.
 
 ## API documentation
 
