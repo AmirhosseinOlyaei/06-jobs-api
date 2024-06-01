@@ -1,3 +1,7 @@
+# HR and user registeration API
+
+HR and user registeration API using Node.
+
 #### Setup
 
 ```bash
