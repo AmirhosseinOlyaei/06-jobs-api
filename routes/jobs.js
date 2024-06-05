@@ -1,21 +1,21 @@
-// routes/jobs.js
-import express from "express";
+// 06-jobs-api/starter/routes/jobs.js
+const express = require("express");
 const router = express.Router();
 
-import {
+const {
   createJob,
   deleteJob,
   getAllJobs,
   updateJob,
   getJob,
-} from "../controllers/jobs.js";
+} = require("../controllers/jobs");
 
-import authenticateUser from "../middleware/authentication.js";
+const { checkToken } = require("../middlewares/auth");
 
-router.post("/", authenticateUser, createJob);
-router.get("/", authenticateUser, getAllJobs);
-router.get("/:id", authenticateUser, getJob);
-router.delete("/:id", authenticateUser, deleteJob);
-router.patch("/:id", authenticateUser, updateJob);
+router.post("/", checkToken, createJob);
+router.get("/", checkToken, getAllJobs);
+router.get("/:id", checkToken, getJob);
+router.delete("/:id", checkToken, deleteJob);
+router.patch("/:id", checkToken, updateJob);
 
-export default router;
+module.exports = router;

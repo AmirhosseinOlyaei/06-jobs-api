@@ -1,7 +1,7 @@
-// models/Job.js
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+// 06-jobs-api/starter/models/Job.js
 
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const jobSchema = new Schema(
   {
     company: {
@@ -35,4 +35,4 @@ const jobSchema = new Schema(
   { timestamps: true }
 );
 const Job = mongoose.model("Job", jobSchema);
-export default Job;
+module.exports = Job;

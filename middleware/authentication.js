@@ -1,24 +1,38 @@
-// middleware/authentication.js
-import jwt from "jsonwebtoken";
-import UnauthenticatedError from "../errors/unauthenticated.js";
+// 06-jobs-api/starter/middleware/authentication.js
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const { UnauthorizedError } = require("../utils/errors");
 
-const authenticateUser = (req, res, next) => {
-  // const authHeader = req.get("Authorization");
+module.exports = (req, res, next) => {
+  //   const authHeader = req.get("Authorization");
   const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new UnauthenticatedError("No authorization header");
+  if (!authHeader || !authHeader.startsWith("Bearer")) {
+    throw new UnauthorizedError("No authorization header");
   }
 
   const token = authHeader.split(" ")[1];
+  let decodedToken;
   try {
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     // attach the user to the job routes
     // req.user = User.findById(decodedToken.userId).select("-password");
     req.user = { userId: decodedToken.userId, name: decodedToken.name };
     next();
   } catch (err) {
-    throw new UnauthenticatedError("Invalid token");
+    throw new UnauthorizedError("Invalid token");
   }
-};
+  if (!decodedToken) {
+    throw new UnauthorizedError("No token");
+  }
 
-export default authenticateUser;
+  // const { userId } = decodedToken;
+  // User.findById(userId)
+  //   .then((user) => {
+  //     if (!user) {
+  //       throw new UnauthorizedError("Invalid token");
+  //     }
+  //     req.user = user;
+  //     next();
+  //   })
+  //   .catch((err) => next(err));
+};

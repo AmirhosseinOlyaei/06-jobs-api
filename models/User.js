@@ -1,15 +1,16 @@
-// models/User.js
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-const { Schema } = mongoose;
+// 06-jobs-api/starter/models/User.js
+
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   name: {
     type: String,
     required: [true, "Please provide name"],
     minlength: 3,
-    maxlength: 50,
+    maxleangh: 50,
   },
   email: {
     type: String,
@@ -23,7 +24,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, "Please provide password"],
-    minlength: 5,
+    minleangh: 5,
   },
 });
 
@@ -45,4 +46,4 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
   return isMatch;
 };
 
-export default mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);
