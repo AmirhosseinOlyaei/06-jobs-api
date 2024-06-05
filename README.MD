@@ -1,3 +1,15 @@
+# HR and user registration API
+
+Human Resource and user registration API using Node.
+
+## API documentation
+
+[https://task-api-node-27xu.onrender.com](https://task-api-node-27xu.onrender.com)
+
+## Production
+
+[hr-api-one.vercel.app](hr-api-one.vercel.app)
+
 #### Setup
 
 ```bash
